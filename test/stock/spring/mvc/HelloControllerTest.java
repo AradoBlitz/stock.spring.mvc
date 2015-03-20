@@ -12,6 +12,7 @@ public class HelloControllerTest {
 		HelloController controller = new HelloController();
 		ModelAndView modelAndView = controller.handleRequest(null,null);
 		assertNotNull("Request should be routed by controller",modelAndView);
-		assertEquals("hello.jsp", modelAndView.getViewName());
+		assertEquals("WEB-INF/jsp/hello.jsp", modelAndView.getViewName());
+		assertNotNull("NOW attribute should be provided",(String)modelAndView.getModel().get("now"));
 	}
 }
