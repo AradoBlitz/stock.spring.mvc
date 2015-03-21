@@ -15,7 +15,7 @@ public class HelloController implements Controller{
 			HttpServletResponse arg1) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return new ModelAndView("WEB-INF/jsp/hello.jsp","now",new Date().toString());
+		return new ModelAndView("hello","now",new Date().toString());
 	}
 
 }
