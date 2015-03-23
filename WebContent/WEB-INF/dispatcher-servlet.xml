@@ -7,7 +7,7 @@
 
   <!-- the application context definition for the springapp DispatcherServlet -->
 
-  <bean name="/hello.htm" class="stock.spring.mvc.web.InventoryController"/>
+  <bean name="/inventory.htm" class="stock.spring.mvc.web.InventoryController"/>
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
