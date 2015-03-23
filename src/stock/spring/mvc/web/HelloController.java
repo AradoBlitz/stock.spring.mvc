@@ -1,4 +1,4 @@
-package stock.spring.mvc;
+package stock.spring.mvc.web;
 
 import java.util.Date;
 

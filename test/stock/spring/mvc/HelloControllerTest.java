@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import stock.spring.mvc.web.HelloController;
+
 public class HelloControllerTest {
 
 	@Test
