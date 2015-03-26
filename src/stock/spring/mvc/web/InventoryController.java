@@ -10,9 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import stock.spring.mvc.service.ProductManager;
 import stock.spring.mvc.service.SimpleProductManager;
 
 public class InventoryController implements Controller{
+
+	private ProductManager productManager;
+	
+	public ProductManager getProductManager() {
+		return productManager;
+	}
+
+	public void setProductManager(ProductManager productManager) {
+		this.productManager = productManager;
+	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest arg0,
@@ -20,7 +31,7 @@ public class InventoryController implements Controller{
 		// TODO Auto-generated method stub
 		Map<String,Object> model = new HashMap<>();
 		model.put("now",new Date().toString());
-		model.put("products", new SimpleProductManager().getProducts());
+		model.put("products", productManager.getProducts());
 		return new ModelAndView("inventory",model);
 	}
 
