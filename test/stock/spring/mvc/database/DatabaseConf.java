@@ -14,8 +14,10 @@ public class DatabaseConf {
 
 	@Bean
 	public DataSource init(){
+	
 		return new EmbeddedDatabaseBuilder()
         .setType(EmbeddedDatabaseType.HSQL)
         .build();
 	}
+	
 }
