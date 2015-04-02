@@ -3,6 +3,7 @@ package stock.spring.mvc.database;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -46,11 +47,7 @@ public class JdbcTemplateProductDao {
 
 	public void save(Product create) {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
-		jdbc.update( "update products set price = " + create.getPrice() + " where id = 1");
-				/*, new MapSqlParameterSource()
-		.addValue("description", create.getDescription())
-		.addValue("price", new BigDecimal(22.10))		
-		.addValue("id", new Integer(1)));*/
+		jdbc.update( "update products set price = " + create.getPrice() + " where id = " + create.getId());
 		
 	}
 

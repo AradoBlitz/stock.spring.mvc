@@ -42,7 +42,7 @@ public class DatabaseTest {
 		
 		List<Product> productList = productDao.getProductList();
 		assertEquals(Product.create(5.78, "Lamp"), productList.get(0));
-		productDao.save(Product.create(22.10, "Lamp"));
-		assertEquals(Product.create(22.10, "Lamp"), productDao.getProductList().get(0));
+		productDao.save(Product.create(1,22.10, "Lamp"));
+		assertEquals(Product.create(1,22.10, "Lamp"), productDao.getProductList().get(0));
 	}
 }

@@ -9,8 +9,17 @@ public class Product {
 		return chair;
 	}
 	
+	private int id;
 	private double price;
 	private String description;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public void setPrice(double price) {
 		this.price = price;
@@ -41,6 +50,12 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [Price=" + price + ", Description=" + description + "]";
+	}
+
+	public static Product create(int i, double d, String string) {
+		Product prod = create(d, string);
+		prod.id = i;
+		return prod;
 	}
 
 	
