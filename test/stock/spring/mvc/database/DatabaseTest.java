@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -27,26 +28,21 @@ import stock.spring.mvc.domain.Product;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=DatabaseConf.class)              
 @TestExecutionListeners({SqlScriptsTestExecutionListener.class,DependencyInjectionTestExecutionListener.class})
+@Sql({"/test-schema.sql","/load_data.sql"})
 public class DatabaseTest {
 
 	
 	@Autowired
     private DataSource dataSource;
+	@Autowired
+	private JdbcTemplateProductDao productDao;
 
 	@Test
-	@Sql({"/test-schema.sql","/load_data.sql"})
 	public void testName() throws Exception {
-		assertNotNull("Datasource should be autowired",dataSource);
-		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
-		Product actual = jdbc.queryForObject("select * from products", new RowMapper<Product>(){
-
-			@Override
-			public Product mapRow(ResultSet arg0, int arg1) throws SQLException {
-				
-				return Product.create(arg0.getDouble(3), arg0.getString(2));
-			}
-			
-		});
-		assertEquals(Product.create(5.78, "Lamp"), actual );
+		
+		List<Product> productList = productDao.getProductList();
+		assertEquals(Product.create(5.78, "Lamp"), productList.get(0));
+		productDao.save(Product.create(22.10, "Lamp"));
+		assertEquals(Product.create(22.10, "Lamp"), productDao.getProductList().get(0));
 	}
 }

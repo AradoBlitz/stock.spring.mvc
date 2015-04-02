@@ -20,4 +20,8 @@ public class DatabaseConf {
         .build();
 	}
 	
+	@Bean
+	public JdbcTemplateProductDao createProductDao(){
+		return new JdbcTemplateProductDao(init());
+	}
 }
