@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import stock.spring.mvc.domain.JdbcTemplateProductDao;
+
 @Configuration
 public class DatabaseConf {
 
