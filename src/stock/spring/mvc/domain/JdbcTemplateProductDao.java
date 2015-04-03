@@ -27,6 +27,7 @@ public class JdbcTemplateProductDao implements ProductDao {
 	 */
 	@Override
 	public List<Product> getProductList() {
+		System.out.println("Get product list.");
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		
 		List<Product> actual = jdbc.query("select * from products", new RowMapper<Product>(){
@@ -34,7 +35,7 @@ public class JdbcTemplateProductDao implements ProductDao {
 			@Override
 			public Product mapRow(ResultSet arg0, int arg1) throws SQLException {
 				
-				return Product.create(arg0.getDouble(3), arg0.getString(2));
+				return Product.create(arg0.getInt(1), arg0.getDouble(3), arg0.getString(2));
 			}
 			
 		});
@@ -48,7 +49,8 @@ public class JdbcTemplateProductDao implements ProductDao {
 	 */
 	@Override
 	public void save(Product create) {
-		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+		System.out.println("Save[" + create + "]");
+		JdbcTemplate jdbc = new JdbcTemplate(dataSource);		
 		jdbc.update( "update products set price = " + create.getPrice() + " where id = " + create.getId());
 		
 	}

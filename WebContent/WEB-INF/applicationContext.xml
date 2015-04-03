@@ -18,10 +18,13 @@
           		<property name="productDao" ref="productDao"></property>
           </bean>
           
-          <bean name="productDao" class="stock.spring.mvc.domain.StubProductDao"></bean>
+          <bean name="productDao" class="stock.spring.mvc.domain.JdbcTemplateProductDao">
+          		<constructor-arg ref="dataSource"></constructor-arg>
+          </bean>
           
-          <jdbc:embedded-database id="dataSource" type="HSQL">
+         <jdbc:embedded-database id="dataSource">
 			    <jdbc:script location="classpath:test-schema.sql"/>
 			    <jdbc:script location="classpath:load_data.sql"/>
 		</jdbc:embedded-database>
+		
 </beans>

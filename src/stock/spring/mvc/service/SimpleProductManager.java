@@ -20,7 +20,7 @@ public class SimpleProductManager implements ProductManager {
 
 
 
-	public void setProductDao(StubProductDao productDao) {
+	public void setProductDao(ProductDao productDao) {
 		this.productDao = productDao;
 	}
 
