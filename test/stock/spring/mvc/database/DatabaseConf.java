@@ -21,7 +21,7 @@ public class DatabaseConf {
 	}
 	
 	@Bean
-	public JdbcTemplateProductDao createProductDao(){
+	public ProductDao createProductDao(){
 		return new JdbcTemplateProductDao(init());
 	}
 }

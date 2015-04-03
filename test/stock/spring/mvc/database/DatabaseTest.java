@@ -35,7 +35,7 @@ public class DatabaseTest {
 	@Autowired
     private DataSource dataSource;
 	@Autowired
-	private JdbcTemplateProductDao productDao;
+	private ProductDao productDao;
 
 	@Test
 	public void testName() throws Exception {

@@ -21,7 +21,7 @@
   	<property name="productManager" ref="productManager"></property>
   </bean>
   
-  <bean name="productManager" class="stock.spring.mvc.service.SimpleProductManager"></bean>
+ 
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="message"/>

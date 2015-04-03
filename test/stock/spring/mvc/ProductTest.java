@@ -12,6 +12,7 @@ public class ProductTest {
 
 	ProductManager productManager = new SimpleProductManager();
 	
+	
 	@Test
 	public void getProductsList() throws Exception {
 		

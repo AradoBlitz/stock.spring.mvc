@@ -1,23 +1,15 @@
 package stock.spring.mvc.database;
 
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
-import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-
 import stock.spring.mvc.domain.Product;
 
-public class JdbcTemplateProductDao {
+public class JdbcTemplateProductDao implements ProductDao {
 
 	private DataSource dataSource;	
 
@@ -28,6 +20,10 @@ public class JdbcTemplateProductDao {
 
 
 
+	/* (non-Javadoc)
+	 * @see stock.spring.mvc.database.ProductDao#getProductList()
+	 */
+	@Override
 	public List<Product> getProductList() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		
@@ -45,6 +41,10 @@ public class JdbcTemplateProductDao {
 
 
 
+	/* (non-Javadoc)
+	 * @see stock.spring.mvc.database.ProductDao#save(stock.spring.mvc.domain.Product)
+	 */
+	@Override
 	public void save(Product create) {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		jdbc.update( "update products set price = " + create.getPrice() + " where id = " + create.getId());
