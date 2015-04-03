@@ -2,16 +2,21 @@ package stock.spring.mvc;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import stock.spring.mvc.domain.Product;
-import stock.spring.mvc.service.ProductManager;
+import stock.spring.mvc.domain.StubProductDao;
 import stock.spring.mvc.service.SimpleProductManager;
 
 public class ProductTest {
 
-	ProductManager productManager = new SimpleProductManager();
+	SimpleProductManager productManager = new SimpleProductManager();
 	
+	@Before
+	public void initProductManager(){
+		productManager.setProductDao(new StubProductDao());
+	}
 	
 	@Test
 	public void getProductsList() throws Exception {

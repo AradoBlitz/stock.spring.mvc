@@ -8,13 +8,11 @@ import stock.spring.mvc.domain.StubProductDao;
 
 public class SimpleProductManager implements ProductManager {
 
-	private ProductDao productDao = new StubProductDao();
+	private ProductDao productDao;
 	
 	public SimpleProductManager(){
 		
-	}
-	
-	
+	}	
 	
 	public ProductDao getProductDao() {
 		return productDao;

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import stock.spring.mvc.domain.PriceIncrease;
 import stock.spring.mvc.domain.Product;
+import stock.spring.mvc.domain.StubProductDao;
 import stock.spring.mvc.service.ProductManager;
 import stock.spring.mvc.service.SimpleProductManager;
 
@@ -26,7 +27,8 @@ public class PriceIncreaseFormControllerTest {
 	@Test
 	public void proccess() throws Exception {
 		
-		ProductManager productManager = new SimpleProductManager();
+		SimpleProductManager productManager = new SimpleProductManager();
+		productManager.setProductDao(new StubProductDao());
 		PriceIncreaseFormController increaseController = new PriceIncreaseFormController();
 		increaseController.setProductManager(productManager);
 		Map<String, Object> model = new HashMap<String, Object>();
